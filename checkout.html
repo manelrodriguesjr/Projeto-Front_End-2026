@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisar Pedido - Raízes do Nordeste</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="checkout-container">
+        <header class="checkout-header">
+            <a href="cardapio.html" class="back-link">← Voltar</a>
+            <h1>Revisar Pedido</h1>
+        </header>
+
+        <!-- Resumo dos Itens -->
+        <section class="checkout-section">
+            <h2>Itens do Pedido</h2>
+            <ul class="lista-revisao">
+                <li>
+                    <span>2x - Cuscuz com Carne</span>
+                    <span>R$ 37,00</span>
+                </li>
+                <li>
+                    <span>1x - Suco de Cajá</span>
+                    <span>R$ 8,00</span>
+                </li>
+            </ul>
+            <div class="total-destaque">
+                <strong>TOTAL</strong>
+                <strong>R$ 45,00</strong>
+            </div>
+        </section>
+
+        <!-- Pagamento e Entrega -->
+        <section class="checkout-section">
+            <h2>Pagamento</h2>
+            <div class="opcoes-pagamento">
+                <label class="radio-option">
+                    <input type="radio" name="pagamento" checked> PIX
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="pagamento"> Cartão de Crédito/Débito
+                </label>
+            </div>
+        </section>
+
+        <section class="checkout-section">
+            <h2>Endereço de Entrega</h2>
+            <form class="form-endereco">
+                <input type="text" placeholder="Rua" required>
+                <div class="form-row">
+                    <input type="text" placeholder="Bairro" required>
+                    <input type="text" placeholder="Nr." style="width: 80px;">
+                </div>
+                <input type="text" placeholder="Cidade" required>
+            </form>
+        </section>
+
+        <!-- Botão Finalizador -->
+        <footer class="checkout-footer">
+            <button onclick="location.href='acompanhamento.html'" class="btn-finalizar">
+                Finalizar e Pagar <span>R$ 45,00</span>
+            </button>
+        </footer>
+    </main>
+
+</body>
+</html>
