@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades - Raízes do Nordeste</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="header-navegacao">
+        <a href="index.html">Voltar</a>
+        <span class="logo-central">Raízes do Nordeste</span>
+        <a href="index.html">Início</a>
+    </nav>
+
+    <div class="container">
+        <div style="text-align: center; margin: 20px 0 30px;">
+            <h2 style="font-size: 1.8rem;">Onde você está?</h2>
+            <p style="color: #666;">Selecione uma unidade para ver o cardápio</p>
+        </div>
+
+        <section class="lista-unidades">
+            <article class="card-unidade" onclick="location.href='cardapio.html'">
+                <div class="unidade-info">
+                    <h3>Unidade Recife</h3>
+                    <p>Endereço: Rua do Bom Jesus, 45 - Bairro do Recife</p>
+                    <p class="status">Aberto / Fechado</p>
+                </div>
+            </article>
+
+            <article class="card-unidade" onclick="location.href='cardapio.html'">
+                <div class="unidade-info">
+                    <h3>Unidade Olinda</h3>
+                    <p>Endereço: Av. Getúlio Vargas, 123 - Olinda</p>
+                    <p class="status">Aberto / Fechado</p>
+                </div>
+            </article>
+
+            <article class="card-unidade especial" onclick="location.href='cardapio.html'">
+                <div class="unidade-info">
+                    <h3>Unidade Caruaru</h3>
+                    <p>Endereço: Pátio do Forró, s/n - Caruaru</p>
+                    <p class="status">Aberto / Fechado</p>
+                </div>
+                <span class="tag-especial">Especial - São João</span>
+            </article>
+        </section>
+    </div>
+</body>
+</html>
