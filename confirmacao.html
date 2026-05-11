@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Aprovado - Raízes do Nordeste</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .box-parabens { border: 1px solid #000; padding: 20px; margin: 20px 0; text-align: center; }
+        .badge-pontos { border: 1px solid #000; display: inline-block; padding: 10px 20px; margin: 15px 0; font-weight: bold; }
+        .detalhes-pedido { border: 1px solid #000; padding: 15px; margin-top: 20px; text-align: left; }
+        .row-detalhe { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
+        .circulo-placeholder { width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; margin: 20px auto; }
+    </style>
+</head>
+<body>
+    <nav class="header-navegacao">
+        <a href="cardapio.html">Voltar</a>
+        <span class="logo-central">Raízes do Nordeste</span>
+        <a href="index.html">Início</a>
+    </nav>
+
+    <div class="container" style="text-align: center;">
+        <div class="circulo-placeholder"></div>
+        <h1 style="font-family: Georgia, serif; font-size: 1.8rem;">Pagamento Aprovado!</h1>
+        <p>Seu pedido foi confirmado com sucesso</p>
+
+        <div class="box-parabens">
+            <h2 style="font-size: 1.5rem;">★ Parabéns! ★</h2>
+            <p style="margin-top: 10px;">Você ganhou <strong id="ganho-pontos">+0</strong> pontos de fidelidade!</p>
+            <div class="badge-pontos">
+                <p style="font-size: 0.8rem; font-weight: normal;">Seus pontos</p>
+                <span id="total-pontos-badge">0 pts</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #555;">Continue lanchando, acumule pontos e troque por descontos</p>
+        </div>
+
+        <div class="detalhes-pedido">
+            <div class="row-detalhe"><span>Número do pedido:</span> <strong>#003</strong></div>
+            <div class="row-detalhe"><span>Valor total:</span> <strong id="valor-final">R$ 0,00</strong></div>
+            <div class="row-detalhe"><span>Status:</span> <span style="color: green; font-weight: bold;">Pagamento aprovado</span></div>
+        </div>
+
+        <button class="btn-full" style="margin-top: 30px; background: #fff; border: 2px solid #000; font-weight: bold;" onclick="irParaAcompanhamento()">
+            Acompanhar Pedido
+        </button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const total = localStorage.getItem('totalPedido') || "R$ 0,00";
+            const pontos = total.replace('R$ ', '').split(',')[0];
+            document.getElementById('ganho-pontos').innerText = `+${pontos}`;
+            document.getElementById('total-pontos-badge').innerText = `${pontos} pts`;
+            document.getElementById('valor-final').innerText = total;
+        }
+
+        function irParaAcompanhamento() {
+            // Se o usuário marcou entrega no checkout, abre entrega.html, senão retirada.html
+            const tipo = localStorage.getItem('tipoRecebimento') || 'retirada';
+            window.location.href = (tipo === 'entrega') ? 'entrega.html' : 'retirada.html';
+        }
+    </script>
+</body>
+</html>
