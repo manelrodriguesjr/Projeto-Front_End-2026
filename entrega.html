@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhar Pedido - Entrega</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Caixa de informações do endereço */
+        .box-info { 
+            border: 1px solid #000; 
+            padding: 20px; 
+            margin: 20px 0; 
+            text-align: left; 
+        }
+
+        /* Status do Pedido (Bolinhas sem as setas de ligação) */
+        .status-list { 
+            list-style: none; 
+            padding: 0; 
+            margin: 30px 0; 
+            text-align: left; 
+        }
+        .status-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            margin-bottom: 25px; 
+        }
+        .circulo { 
+            width: 30px; 
+            height: 30px; 
+            border: 1px solid #000; 
+            border-radius: 50%; 
+            background: #e0e0e0; /* Cor cinza para status concluído */
+        }
+        .circulo.pendente {
+            background: #fff; /* Círculo branco para o status atual/pendente */
+        }
+
+        /* Botão de confirmação cinza conforme o wireframe */
+        .btn-confirmar {
+            width: 100%;
+            padding: 15px;
+            background: #e0e0e0;
+            border: 1px solid #999;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <nav class="header-navegacao">
+        <a href="javascript:void(0)" onclick="history.back()">Voltar</a>
+        <span class="logo-central">Raízes do Nordeste</span>
+        <a href="index.html">Início</a>
+    </nav>
+
+    <div class="container" style="text-align: center;">
+        <h2 style="font-family: Georgia, serif; margin-top: 20px; font-size: 2rem;">Pedido #003</h2>
+        
+        <h3 style="color: #000; margin-bottom: 20px; font-weight: bold;">Seu pedido saiu pra entrega!</h3>
+
+        <div class="box-info">
+            <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Endereço de entrega</strong></p>
+            <p>Rua: </p>
+            <p style="margin-top: 15px;"><strong>Previsão de entrega em 30 minutos</strong></p>
+        </div>
+
+        <div class="status-list">
+            <div class="status-item">
+                <div class="circulo"></div>
+                <div><strong>Pedido recebido</strong></div>
+            </div>
+            <div class="status-item">
+                <div class="circulo"></div>
+                <div><strong>Em preparo</strong></div>
+            </div>
+            <div class="status-item">
+                <div class="circulo pendente"></div>
+                <div><strong>Saiu para entrega</strong></div>
+            </div>
+        </div>
+
+        <button class="btn-confirmar" onclick="alert('Recebimento confirmado! Bom apetite!')">
+            Confirmar recebimento
+        </button>
+    </div>
+</body>
+</html>
