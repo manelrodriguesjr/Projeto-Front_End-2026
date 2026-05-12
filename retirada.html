@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Retirada</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .card { border: 1px solid #000; padding: 20px; margin: 20px 0; text-align: left; }
+        .status-group { margin: 20px 0; text-align: left; }
+        .ball { width: 30px; height: 30px; border: 1px solid #000; border-radius: 50%; background: #ccc; display: inline-block; vertical-align: middle; margin-right: 10px; }
+        .row { margin-bottom: 15px; }
+        .qr-area { border: 1px solid #000; padding: 20px; margin: 20px 0; }
+        .qr-img { width: 180px; display: block; margin: 10px auto; }
+        .btn-final { width: 100%; padding: 15px; border: 1px solid #000; background: #fff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header class="header-navegacao">
+        <a href="#" onclick="history.back()">Voltar</a>
+        <strong>Raízes do Nordeste</strong>
+        <a href="index.html">Início</a>
+    </header>
+
+    <div class="container" style="text-align: center;">
+        <h2 style="font-family: serif;">Pedido #003</h2>
+        <p>Seu pedido está pronto para retirada!</p>
+
+        <div class="card">
+            <strong>Informações da retirada</strong><br>
+            Unidade: Shopping<br>
+            Endereço: Av. das Nações, 1500<br><br>
+            <strong>Horário previsto: 19:30</strong>
+        </div>
+
+        <div class="status-group">
+            <p style="text-decoration: underline;">Status do pedido</p>
+            <div class="row"><div class="ball"></div><span>Pedido recebido</span></div>
+            <div class="row"><div class="ball"></div><span>Em preparo</span></div>
+            <div class="row"><div class="ball"></div><span>Pronto para retirada</span></div>
+        </div>
+
+        <div class="qr-area">
+            <p>Apresente o QR Code para retirada!</p>
+            <img src="QR Code.jpg" class="qr-img">
+            <p>#003</p>
+        </div>
+
+        <button class="btn-final">CONFIRMAR RETIRADA</button>
+    </div>
+</body>
+</html>
