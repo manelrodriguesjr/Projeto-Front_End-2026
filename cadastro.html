@@ -2,27 +2,69 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Raízes do Nordeste</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <main class="form-container">
-        <header>
-            <a href="index.html">Voltar</a>
-            <h1>Crie sua conta</h1>
-        </header>
+<body style="padding-bottom: 20px;">
+    <nav class="header-navegacao">
+        <a href="index.html">Voltar</a>
+        <span class="logo-central">Raízes do Nordeste</span>
+        <a href="index.html">Início</a>
+    </nav>
 
-        <form>
-            <input type="text" placeholder="Nome Completo" required>
-            <input type="text" placeholder="CPF" required>
-            <input type="email" placeholder="E-mail" required>
+    <div class="container">
+        <div style="text-align: center; margin: 30px 0;">
+            <div style="border: 2px solid #000; padding: 20px 0; max-width: 320px; margin: 0 auto; background-color: #fcfcfc;">
+                <h1 style="font-size: 1.8rem; font-weight: bold; text-transform: uppercase;">BEM-VINDO</h1>
+            </div>
+            <p style="font-size: 1.1rem; margin-top: 25px; color: #000;">Crie sua conta e tenha benefícios</p>
+        </div>
+
+        <form onsubmit="finalizarCadastro(event)">
+            <div style="margin-bottom: 15px;">
+                <input type="text" placeholder="Nome Completo" style="width: 100%; padding: 15px; border: 2px solid #000;" required>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input type="text" placeholder="CPF" style="width: 100%; padding: 15px; border: 2px solid #000;" required>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input type="email" placeholder="E-mail" style="width: 100%; padding: 15px; border: 2px solid #000;" required>
+            </div>
+            <div style="margin-bottom: 25px;">
+                <input type="password" placeholder="Senha" style="width: 100%; padding: 15px; border: 2px solid #000;" required>
+            </div>
             
-            <label class="checkbox">
-                <input type="checkbox"> Aceito LGPD
-            </label>
+            <div style="margin-bottom: 30px; text-align: left;">
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <input type="checkbox" required> Aceito LGPD
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox"> Clube Raízes
+                </label>
+            </div>
             
-            <button type="submit" class="btn-cadastrar">CADASTRAR</button>
+            <button type="submit" class="btn-full" style="border: 2px solid #000; background-color: #fff; font-weight: bold;">
+                CADASTRAR
+            </button>
         </form>
-    </main>
+    </div>
+
+    <script>
+        function finalizarCadastro(event) {
+            event.preventDefault();
+            
+            localStorage.setItem('usuarioLogado', 'true');
+
+            const veioDoCheckout = localStorage.getItem('origemCheckout');
+
+            if (veioDoCheckout === 'true') {
+                localStorage.removeItem('origemCheckout');
+                window.location.href = 'checkout.html';
+            } else {
+                window.location.href = 'unidades.html';
+            }
+        }
+    </script>
 </body>
 </html>
