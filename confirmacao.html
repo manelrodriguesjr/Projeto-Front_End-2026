@@ -6,59 +6,69 @@
     <title>Pagamento Aprovado - Raízes do Nordeste</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .box-parabens { border: 1px solid #000; padding: 20px; margin: 20px 0; text-align: center; }
-        .badge-pontos { border: 1px solid #000; display: inline-block; padding: 10px 20px; margin: 15px 0; font-weight: bold; }
-        .detalhes-pedido { border: 1px solid #000; padding: 15px; margin-top: 20px; text-align: left; }
-        .row-detalhe { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
-        .circulo-placeholder { width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; margin: 20px auto; }
+        .sucesso-header { text-align: center; padding: 20px 0; }
+        .circulo-status { width: 50px; height: 50px; background: #ccc; border-radius: 50%; margin: 0 auto 15px; }
+        
+        .box-fidelidade { border: 1px solid #000; padding: 20px; text-align: center; margin-bottom: 20px; }
+        .pontos-card { border: 1px solid #000; display: inline-block; padding: 15px 30px; margin: 15px 0; background: #fff; box-shadow: 2px 2px 0px #000; }
+        
+        .detalhes-pagamento { border-top: 2px solid #ccc; padding-top: 15px; margin-bottom: 20px; }
+        .linha-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; }
+        
+        .estrela-clara { color: #ccc; font-size: 20px; vertical-align: middle; }
     </style>
 </head>
 <body>
     <nav class="header-navegacao">
-        <a href="cardapio.html">Voltar</a>
-        <span class="logo-central">Raízes do Nordeste</span>
+        <a href="#" onclick="history.back()">Voltar</a>
+        <strong>Raízes do Nordeste</strong>
         <a href="index.html">Início</a>
     </nav>
 
-    <div class="container" style="text-align: center;">
-        <div class="circulo-placeholder"></div>
-        <h1 style="font-family: Georgia, serif; font-size: 1.8rem;">Pagamento Aprovado!</h1>
-        <p>Seu pedido foi confirmado com sucesso</p>
+    <div class="container">
+        <div class="sucesso-header">
+            <div class="circulo-status"></div>
+            <h2 style="font-family: serif; font-size: 24px;">Pagamento Aprovado!</h2>
+            <p style="font-size: 14px; margin-top: 5px;">Seu pedido foi confirmado com sucesso</p>
+        </div>
 
-        <div class="box-parabens">
-            <h2 style="font-size: 1.5rem;">★ Parabéns! ★</h2>
-            <p style="margin-top: 10px;">Você ganhou <strong id="ganho-pontos">+0</strong> pontos de fidelidade!</p>
-            <div class="badge-pontos">
-                <p style="font-size: 0.8rem; font-weight: normal;">Seus pontos</p>
-                <span id="total-pontos-badge">0 pts</span>
+        <div class="box-fidelidade">
+            <h3 style="font-family: serif; font-size: 22px;">
+                <span class="estrela-clara">★</span> Parabéns! <span class="estrela-clara">★</span>
+            </h3>
+            <p style="margin-top: 10px;">Você ganhou <strong>+45 pontos</strong> de fidelidade!</p>
+            
+            <div class="pontos-card">
+                <p style="font-size: 14px; color: #666;">Seus pontos</p>
+                <strong style="font-size: 24px;">45 pts</strong>
             </div>
-            <p style="font-size: 0.8rem; color: #555;">Continue lanchando, acumule pontos e troque por descontos</p>
+            
+            <p style="font-size: 13px; margin-top: 10px;">Continue lanchando, acumule pontos e troque por descontos</p>
         </div>
 
-        <div class="detalhes-pedido">
-            <div class="row-detalhe"><span>Número do pedido:</span> <strong>#003</strong></div>
-            <div class="row-detalhe"><span>Valor total:</span> <strong id="valor-final">R$ 0,00</strong></div>
-            <div class="row-detalhe"><span>Status:</span> <span style="color: green; font-weight: bold;">Pagamento aprovado</span></div>
+        <div class="detalhes-pagamento">
+            <div class="linha-info">
+                <strong>Número do pedido:</strong>
+                <span>#003</span>
+            </div>
+            <div class="linha-info">
+                <strong>Valor total:</strong>
+                <strong>R$ 45,00</strong>
+            </div>
+            <div class="linha-info">
+                <strong>Status:</strong>
+                <span>Pagamento aprovado</span>
+            </div>
         </div>
 
-        <button class="btn-full" style="margin-top: 30px; background: #fff; border: 2px solid #000; font-weight: bold;" onclick="irParaAcompanhamento()">
-            Acompanhar Pedido
-        </button>
+        <button class="btn-full" onclick="irParaAcompanhamento()">Acompanhar Pedido</button>
     </div>
 
     <script>
-        window.onload = function() {
-            const total = localStorage.getItem('totalPedido') || "R$ 0,00";
-            const pontos = total.replace('R$ ', '').split(',')[0];
-            document.getElementById('ganho-pontos').innerText = `+${pontos}`;
-            document.getElementById('total-pontos-badge').innerText = `${pontos} pts`;
-            document.getElementById('valor-final').innerText = total;
-        }
-
         function irParaAcompanhamento() {
-            // Se o usuário marcou entrega no checkout, abre entrega.html, senão retirada.html
-            const tipo = localStorage.getItem('tipoRecebimento') || 'retirada';
-            window.location.href = (tipo === 'entrega') ? 'entrega.html' : 'retirada.html';
+            // Aqui podes decidir se vai para entrega ou retirada
+            // Por enquanto, vamos simular que vai para a tela de entrega
+            window.location.href = 'entrega.html';
         }
     </script>
 </body>
