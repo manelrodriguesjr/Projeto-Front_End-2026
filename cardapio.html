@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Interativo - Raízes do Nordeste</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="padding-bottom: 100px;">
+    <nav class="header-navegacao">
+        <a href="unidades.html">Voltar</a>
+        <span class="logo-central">Raízes do Nordeste</span>
+        <a href="index.html">Início</a>
+    </nav>
+
+    <div class="container">
+        <h2 style="text-align:center; margin: 20px 0; font-family: Georgia, serif;">Cardápio Interativo</h2>
+        
+        <div class="categorias-bar">
+            <button class="cat-btn">Cuscuz</button>
+            <button class="cat-btn">Tapiocas</button>
+            <button class="cat-btn">Bebidas</button>
+            <button class="cat-btn">Promoções</button>
+            <button class="cat-btn">Todos</button>
+        </div>
+
+        <article class="item-card">
+            <div class="item-info">
+                <div>
+                    <h4 style="font-size: 1.4rem;">Cuscuz</h4>
+                    <p style="font-size: 1.1rem; margin: 5px 0;">R$ 18,50</p>
+                    <span class="pontos-tag">+ 18.5 pontos</span>
+                </div>
+                <button id="add-cuscuz" class="btn-add" onclick="primeiroAdd('cuscuz')">+ Adicionar</button>
+                <div id="qty-cuscuz" class="qty-selector">
+                    <button class="btn-qty" onclick="mudarQtd('cuscuz', 1)">+</button>
+                    <strong id="num-cuscuz">1</strong>
+                    <button class="btn-qty" onclick="mudarQtd('cuscuz', -1)">-</button>
+                </div>
+            </div>
+            <div class="item-img-box"><img src="cuscuz.jpg" alt="Cuscuz"></div>
+        </article>
+
+        <article class="item-card">
+            <div class="item-info">
+                <div>
+                    <h4 style="font-size: 1.4rem;">Bebidas</h4>
+                    <p style="font-size: 1.1rem; margin: 5px 0;">R$ 8,00</p>
+                    <span class="pontos-tag">+ 8 pontos</span>
+                </div>
+                <button id="add-bebidas" class="btn-add" onclick="primeiroAdd('bebidas')">+ Adicionar</button>
+                <div id="qty-bebidas" class="qty-selector">
+                    <button class="btn-qty" onclick="mudarQtd('bebidas', 1)">+</button>
+                    <strong id="num-bebidas">1</strong>
+                    <button class="btn-qty" onclick="mudarQtd('bebidas', -1)">-</button>
+                </div>
+            </div>
+            <div class="item-img-box"><img src="bebidas.jpg" alt="Bebidas"></div>
+        </article>
+
+        <article class="item-card">
+            <div class="item-info">
+                <div>
+                    <h4 style="font-size: 1.4rem;">Tapiocas</h4>
+                    <p style="font-size: 1.1rem; margin: 5px 0;">R$ 15,00</p>
+                    <span class="pontos-tag">+ 15 pontos</span>
+                </div>
+                <button id="add-tapiocas" class="btn-add" onclick="primeiroAdd('tapiocas')">+ Adicionar</button>
+                <div id="qty-tapiocas" class="qty-selector">
+                    <button class="btn-qty" onclick="mudarQtd('tapiocas', 1)">+</button>
+                    <strong id="num-tapiocas">1</strong>
+                    <button class="btn-qty" onclick="mudarQtd('tapiocas', -1)">-</button>
+                </div>
+            </div>
+            <div class="item-img-box"><img src="tapiocas.jpg" alt="Tapiocas"></div>
+        </article>
+
+        <article class="item-card">
+            <div class="item-info">
+                <div>
+                    <h4 style="font-size: 1.4rem;">Especial - São João</h4>
+                    <p style="font-size: 1.1rem; margin: 5px 0;">R$ 25,00</p>
+                    <span class="pontos-tag">+ 25 pontos</span>
+                </div>
+                <button id="add-especial" class="btn-add" onclick="primeiroAdd('especial')">+ Adicionar</button>
+                <div id="qty-especial" class="qty-selector">
+                    <button class="btn-qty" onclick="mudarQtd('especial', 1)">+</button>
+                    <strong id="num-especial">1</strong>
+                    <button class="btn-qty" onclick="mudarQtd('especial', -1)">-</button>
+                </div>
+            </div>
+            <div class="item-img-box"><img src="Especial - São João.jpg" alt="Especial"></div>
+        </article>
+    </div>
+
+    <div id="lancheira" class="lancheira-fixa" onclick="irParaCheckout()">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="border: 1px solid #000; padding: 2px 8px;"> </div> 
+            <span>Lancheira</span>
+        </div>
+        <strong id="total-valor">R$ 0,00</strong>
+    </div>
+
+    <script>
+        let carrinho = { cuscuz: 0, bebidas: 0, tapiocas: 0, especial: 0 };
+        const precos = { cuscuz: 18.5, bebidas: 8.0, tapiocas: 15.0, especial: 25.0 };
+
+        function primeiroAdd(item) {
+            carrinho[item] = 1;
+            document.getElementById('add-' + item).style.display = 'none';
+            document.getElementById('qty-' + item).style.display = 'flex';
+            document.getElementById('num-' + item).innerText = '1';
+            atualizarTotal();
+        }
+
+        function mudarQtd(item, delta) {
+            carrinho[item] += delta;
+            if (carrinho[item] <= 0) {
+                carrinho[item] = 0;
+                document.getElementById('add-' + item).style.display = 'block';
+                document.getElementById('qty-' + item).style.display = 'none';
+            } else {
+                document.getElementById('num-' + item).innerText = carrinho[item];
+            }
+            atualizarTotal();
+        }
+
+        function atualizarTotal() {
+            let total = 0;
+            for (let item in carrinho) {
+                total += carrinho[item] * precos[item];
+            }
+            
+            const barra = document.getElementById('lancheira');
+            const valorFormatado = 'R$ ' + total.toFixed(2).replace('.', ',');
+            
+            if (total > 0) {
+                barra.style.display = 'flex';
+                document.getElementById('total-valor').innerText = valorFormatado;
+                localStorage.setItem('totalPedido', valorFormatado);
+            } else {
+                barra.style.display = 'none';
+            }
+        }
+
+        function irParaCheckout() {
+            window.location.href = 'checkout.html';
+        }
+    </script>
+</body>
+</html>
